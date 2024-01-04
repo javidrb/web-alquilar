@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Piso en Alquiler</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+  <header>
+    <h1>Alquiler de Piso</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">¿Quienes somos?</a></li>
+        <li><a href="pagina2.html">Pisos Disponibles</a></li>
+        <li><a href="pagina3.html">Contactanos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="property-info">
+      <h2>Piso en el Centro</h2>
+      <p>Descripción del piso...</p>
+      <p>Precio por noche: $XXX</p>
+      <p>Características: X habitaciones, X baños, etc.</p>
+    </section>
+
+    <section class="contact-info">
+      <h2>Contacto</h2>
+      <p>Nombre: Nombre del Contacto</p>
+      <p>Email: correo@ejemplo.com</p>
+      <p>Teléfono: XXX-XXXXXX</p>
+    </section>
+
+
+    <section class="photo-album">
+      <h2></h2>
+      <div class="slideshow-container">
+        <div class="mySlides">
+          <img src="PISO1/PISO1-1.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+          <img src="PISO1/PISO1-2.jpg" style="width:100%">
+        </div>
+        <div class="mySlides">
+          <img src="PISO1/PISO1-3.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides">
+          <img src="PISO1/PISO1-4.jpg" style="width:100%">
+        </div>
+        <div class="mySlides">
+          <img src="PISO1/PISO1-5.jpg" style="width:100%">
+      
+
+        
+        </div>
+
+        <!-- Agrega más imágenes según sea necesario -->
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    </section>
+    <section class="map-section">
+      <h2>Mapa</h2>
+      <div id="map"></div>
+    </section>
+    
+    <section class="services-available">
+      <h2>Servicios Disponibles</h2>
+      <ul class="services-list">
+        <li>
+          <img src="LogosServicios/frio.png" alt="Aire Acondicionado">
+          <p>Aire Acondicionado</p>
+        </li>
+        <li>
+          <img src="LogosServicios/calor.png" alt="Calefaccion">
+          <p>Calefaccion</p>
+        </li>
+        <li>
+          <img src="LogosServicios/piscina.png" alt="Piscina Comunitaria">
+          <p>Piscina Comunitaria</p>
+        </li>
+        <li>
+          <img src="LogosServicios/coche.png" alt="Opcion a Parking">
+          <p>Opcion a Parking</p>
+        </li>
+        <li>
+          <img src="LogosServicios/terraza.png" alt="Terraza Propia">
+          <p>Terraza Propia</p>
+        </li>
+        <li>
+          <img src="LogosServicios/wifi.png" alt="Fibra WIFI">
+          <p>Fibra WIFI</p>
+        </li>
+      </ul>
+    </section>
+    
+
+    <section class="comments-section">
+      <h2>Comentarios</h2>
+
+      <ul class="comments-list">
+        <li class="comment">
+          <p>¡Gran lugar para alojarse!</p>
+          <small>Usuario - Fecha</small>
+        </li>
+        <!-- Agrega más comentarios según sea necesario -->
+      </ul>
+
+      <form class="comment-form" action="#" method="post">
+        <label for="comment">Escribe tu comentario:</label>
+        <textarea id="comment" name="comment" required></textarea>
+        <button type="submit">Enviar comentario</button>
+      </form>
+    </section>
+  </main>
+
+  <footer style="position: fixed; bottom: 0; left: 0; right: 0;">
+    <p>Derechos de Autor © 2024 Alquiler de Pisos</p>
+  </footer>
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      let i;
+      const slides = document.getElementsByClassName("mySlides");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex - 1].style.display = "block";
+    }
+  </script>
+  <!-- ... Tu código HTML anterior ... -->
+  <footer style="position: fixed; bottom: 0; left: 0; right: 0;">
+    <p>Derechos de Autor © 2024 Alquiler de Pisos</p>
+  </footer>
+  <section class="map-section">
+    <h2>Mapa</h2>
+    <div id="map"></div>
+  </section>
+
+  <!-- Botón para abrir el mapa -->
+  <button onclick="openMap()">Ver Mapa</button>
+</main>
+
+<footer style="position: fixed; bottom: 0; left: 0; right: 0;">
+  <p>Derechos de Autor © 2024 Alquiler de Pisos</p>
+</footer>
+
+<!-- Script para la API de Google Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi3daGyz89iMZumlYAyBefqtEc5MdXzdY&callback=initMap" async defer></script>
+
+<!-- Script para la funcionalidad del mapa y abrir el mapa en una nueva ventana -->
+<script>
+  let map;
+
+  function initMap() {
+    const center = { lat: 36.72225559637448, lng: -4.480948296764685 };
+    const mapOptions = {
+      center: center,
+      zoom: 12
+    };
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    new google.maps.Marker({
+      position: center,
+      map: map,
+      title: '¡Estás aquí!'
+    });
+  }
+
+  function openMap() {
+    const newWindow = window.open("mapa.html", "_blank", "width=600,height=400");
+  }
+</script>
+</body>
+</html>
